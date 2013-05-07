@@ -7,13 +7,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Menu;
+import android.view.View;
+
 
 public class MainActivity extends Activity {
 
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,12 +29,12 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
-	private void dispatchTakePictureIntent(int actionCode) {
+
+	/*private void dispatchTakePictureIntent(int actionCode) {
 	    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 	    startActivityForResult(takePictureIntent, actionCode);
-	}
-	
+	}*/
+
 	public static boolean isIntentAvailable(Context context, String action) {
 	    final PackageManager packageManager = context.getPackageManager();
 	    final Intent intent = new Intent(action);
@@ -40,6 +43,14 @@ public class MainActivity extends Activity {
 	    return list.size() > 0;
 	}
 	
-	
+	public void takePhoto(View view) {
+	    // Do something in response to button
+		Intent intent = new Intent(this, TakePhotoActivity.class);	    
+		startActivity(intent);
+
+
+	}
+
+
 
 }

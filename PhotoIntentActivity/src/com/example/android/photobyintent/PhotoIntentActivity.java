@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 
@@ -26,6 +26,10 @@ public class PhotoIntentActivity extends Activity {
 	private Bitmap mImageBitmap;
 
 	private float averageHue;
+	
+	ImageButton cameraButton;
+	private String requiredColor = "blue";
+	private int pixelAmount = 0;
 
 	private void dispatchTakePictureIntent(int actionCode) {
 		Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -42,8 +46,8 @@ public class PhotoIntentActivity extends Activity {
 		mImageView.setVisibility(View.VISIBLE);
 	}
 
-	Button.OnClickListener mTakePicSOnClickListener = 
-		new Button.OnClickListener() {
+	ImageButton.OnClickListener mTakePicSOnClickListener = 
+		new ImageButton.OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			dispatchTakePictureIntent(ACTION_TAKE_PHOTO_S);
@@ -60,7 +64,7 @@ public class PhotoIntentActivity extends Activity {
 		mImageView = (ImageView) findViewById(R.id.imageView1);
 		mImageBitmap = null;
 
-		Button picSBtn = (Button) findViewById(R.id.btnIntendS);
+		ImageButton picSBtn = (ImageButton) findViewById(R.id.btnIntendS);
 		setBtnListenerOrDisable( 
 				picSBtn, 
 				mTakePicSOnClickListener,
@@ -117,15 +121,13 @@ public class PhotoIntentActivity extends Activity {
 	}
 
 	private void setBtnListenerOrDisable( 
-			Button btn, 
-			Button.OnClickListener onClickListener,
+			ImageButton btn, 
+			ImageButton.OnClickListener onClickListener,
 			String intentName
 	) {
 		if (isIntentAvailable(this, intentName)) {
 			btn.setOnClickListener(onClickListener);        	
 		} else {
-			btn.setText( 
-				getText(R.string.cannot).toString() + " " + btn.getText());
 			btn.setClickable(false);
 		}
 	}
@@ -155,16 +157,47 @@ public class PhotoIntentActivity extends Activity {
 		int sumHue = 0;
 		try {
 			for (int i=0; i<=pixelsHSV.length; i++){
-				 sumHue = sumHue + pixelsHSV[i];
-					Log.v("Msg5", sumHue + "");
+			    pixelAmount++;
+			    sumHue = sumHue + pixelsHSV[i];
+			    Log.v("Msg5", sumHue + "");
 			};
 		  } catch (Exception e) {
 		    System.out.println("error");		
 		}
 		
 		/* Save the Average Value in the global variable */
-		averageHue = sumHue / pixelsHSV.length;
+		averageHue = sumHue / pixelAmount;
 		Log.v("Msg3","Your Color: " + averageHue);
+		
+		/* Check required Color and act according the result */
+		cameraButton = (ImageButton) findViewById(R.id.btnIntendS);
+		
+		if (requiredColor == "blue"){
+			if (averageHue > 180 && averageHue < 270){
+				cameraButton.setImageResource(R.drawable.button_yellow);
+				requiredColor = "yellow";
+			}
+			else
+				Log.v("Msg7","FalscheFarbe");			
+		}
+		else if (requiredColor == "yellow"){
+			if (averageHue > 20 && averageHue < 80){
+				cameraButton.setImageResource(R.drawable.button_green);
+				requiredColor = "green";
+			}
+			else
+				Log.v("Msg7","FalscheFarbe");
+		}
+		else if (requiredColor == "green"){
+			if (averageHue > 70 && averageHue < 160){
+				cameraButton.setImageResource(R.drawable.button_red);
+				requiredColor = "red";
+			}
+			else
+				Log.v("Msg7","FalscheFarbe");
+		}
+		else
+			Log.v("Msg6","Sorry, it is the wrong color");
 	}	
 
 }

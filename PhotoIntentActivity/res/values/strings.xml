@@ -3,6 +3,7 @@
     <string name="hello">Hello World, PhotoIntentActivity!</string>
     <string name="app_name">PhotoByIntent</string>
     <string name="btnIntendS">Take (small) Picture</string>
-    <string name="cannot">Cannot</string>
+    <string name="button">PhotoButton</string>
+    <string name="view">View</string>
     <string name="album_name">CameraSample</string>
 </resources>

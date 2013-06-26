@@ -13,7 +13,6 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 
 public class PhotoIntentActivity extends Activity {
@@ -22,10 +21,11 @@ public class PhotoIntentActivity extends Activity {
 
 	private static final String BITMAP_STORAGE_KEY = "viewbitmap";
 	private static final String IMAGEVIEW_VISIBILITY_STORAGE_KEY = "imageviewvisibility";
-	private ImageView mImageView;
 	private Bitmap mImageBitmap;
 
 	private float averageHue;
+	
+	com.example.android.photobyintent.drawableView shapeView;
 	
 	ImageButton cameraButton;
 	private String requiredColor = "blue";
@@ -41,9 +41,6 @@ public class PhotoIntentActivity extends Activity {
 		mImageBitmap = (Bitmap) extras.get("data");
 		
 		getAverageColor(mImageBitmap);
-		
-		mImageView.setImageBitmap(mImageBitmap);
-		mImageView.setVisibility(View.VISIBLE);
 	}
 
 	ImageButton.OnClickListener mTakePicSOnClickListener = 
@@ -61,15 +58,16 @@ public class PhotoIntentActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		mImageView = (ImageView) findViewById(R.id.imageView1);
-		mImageBitmap = null;
-
 		ImageButton picSBtn = (ImageButton) findViewById(R.id.btnIntendS);
 		setBtnListenerOrDisable( 
 				picSBtn, 
 				mTakePicSOnClickListener,
 				MediaStore.ACTION_IMAGE_CAPTURE
 		);
+		
+		/** draw view with pathShapes */
+		shapeView = (com.example.android.photobyintent.drawableView)findViewById(R.id.shapeView);
+		shapeView.setBackgroundColor(0xffffffff);
 	}
 
 	@Override
@@ -91,11 +89,6 @@ public class PhotoIntentActivity extends Activity {
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
 		super.onRestoreInstanceState(savedInstanceState);
 		mImageBitmap = savedInstanceState.getParcelable(BITMAP_STORAGE_KEY);
-		mImageView.setImageBitmap(mImageBitmap);
-		mImageView.setVisibility(
-				savedInstanceState.getBoolean(IMAGEVIEW_VISIBILITY_STORAGE_KEY) ? 
-						ImageView.VISIBLE : ImageView.INVISIBLE
-		);
 	}
 
 	/**

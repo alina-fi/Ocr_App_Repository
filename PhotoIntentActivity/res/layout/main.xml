@@ -9,7 +9,7 @@
         android:id="@+id/btnIntendS"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#00ffffff"
+        android:background="#ffffffff"
         android:contentDescription="@string/button"
         android:src="@drawable/button_blue" />
   

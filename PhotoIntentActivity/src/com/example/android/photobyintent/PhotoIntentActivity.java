@@ -13,6 +13,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 public class PhotoIntentActivity extends Activity {
@@ -128,6 +129,14 @@ public class PhotoIntentActivity extends Activity {
 	
 	//function to get average color
 	private void getAverageColor(Bitmap bitmap){
+		
+		Context context = getApplicationContext();
+		CharSequence text = "Sorry, wrong color. Try again";
+		int duration = Toast.LENGTH_LONG;
+
+		Toast toast = Toast.makeText(context, text, duration);
+		
+		
 		/* Save all pixels in an Array - ARGB values */
 		int[] pixels = new int[bitmap.getHeight()*bitmap.getWidth()];
 		bitmap.getPixels(pixels, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
@@ -171,7 +180,7 @@ public class PhotoIntentActivity extends Activity {
 				requiredColor = "yellow";
 			}
 			else
-				Log.v("Msg7","FalscheFarbe");			
+				toast.show();			
 		}
 		else if (requiredColor == "yellow"){
 			if (averageHue > 20 && averageHue < 80){
@@ -179,18 +188,18 @@ public class PhotoIntentActivity extends Activity {
 				requiredColor = "green";
 			}
 			else
-				Log.v("Msg7","FalscheFarbe");
+				toast.show();
 		}
 		else if (requiredColor == "green"){
-			if (averageHue > 70 && averageHue < 160){
+			if (averageHue > 70 && averageHue < 170){
 				cameraButton.setImageResource(R.drawable.button_red);
 				requiredColor = "red";
 			}
 			else
-				Log.v("Msg7","FalscheFarbe");
+				toast.show();
 		}
 		else
-			Log.v("Msg6","Sorry, it is the wrong color");
+			toast.show();
 	}	
 
 }

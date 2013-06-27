@@ -2,6 +2,7 @@ package com.example.android.photobyintent;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.PathShape;
@@ -9,15 +10,10 @@ import android.util.AttributeSet;
 import android.view.View;
 
 public class drawableView extends View {
-    private ShapeDrawable mDrawableBody;
-    private ShapeDrawable mDrawableUpperRightWing;
-    private ShapeDrawable mDrawableLowerRightWing;
-    private ShapeDrawable mDrawableUpperLeftWing;
-    private ShapeDrawable mDrawableLowerLeftWing;
-    private ShapeDrawable mDrawableUpperLeftPattern;
-    private ShapeDrawable mDrawableUpperRightPattern;
 
-    
+    public ShapeDrawable mDrawables[] = new ShapeDrawable[7];
+    public ShapeDrawable mDrawablesStrokes[] = new ShapeDrawable[7];
+   
 
     public drawableView(Context context,AttributeSet attrs) {
     super(context,attrs);
@@ -65,7 +61,7 @@ public class drawableView extends View {
     lowerRightWing.moveTo(54, 68);
     lowerRightWing.lineTo(64, 68);
     lowerRightWing.lineTo(76, 72);
-    lowerRightWing.lineTo(82, 78);
+    lowerRightWing.lineTo(85, 78);
     lowerRightWing.lineTo(88, 84);
     lowerRightWing.lineTo(88, 96);
     lowerRightWing.lineTo(82, 104);
@@ -99,7 +95,8 @@ public class drawableView extends View {
     lowerLeftWing.moveTo(46, 68);
     lowerLeftWing.lineTo(36, 68);
     lowerLeftWing.lineTo(24, 72);
-    lowerLeftWing.lineTo(18, 78);
+    lowerLeftWing.lineTo(15, 78);
+    lowerLeftWing.lineTo(12, 84);
     lowerLeftWing.lineTo(12, 96);
     lowerLeftWing.lineTo(18, 104);
     lowerLeftWing.lineTo(26, 108);
@@ -136,51 +133,53 @@ public class drawableView extends View {
     upperRightPattern.lineTo(71, 31);
     upperRightPattern.close();
     
-    //mDrawables = new ShapeDrawable[3];
-    mDrawableBody = new ShapeDrawable(new PathShape(body, 100, 130));
-    mDrawableBody.getPaint().setColor(0xFF00FF00);
-
-    mDrawableUpperRightWing = new ShapeDrawable(new PathShape(upperRightWing, 100, 130));
-    mDrawableUpperRightWing.getPaint().setColor(0xFF0000FF);
-    //mDrawableUpperRightWing.getPaint().setStyle(Style.STROKE);
-
-    mDrawableLowerRightWing = new ShapeDrawable(new PathShape(lowerRightWing, 100, 130));
-    mDrawableLowerRightWing.getPaint().setColor(0xFFFF0000);
-
-    mDrawableUpperLeftWing = new ShapeDrawable(new PathShape(upperLeftWing, 100, 130));
-    mDrawableUpperLeftWing.getPaint().setColor(0xFF0000FF);
-
-    mDrawableLowerLeftWing = new ShapeDrawable(new PathShape(lowerLeftWing, 100, 130));
-    mDrawableLowerLeftWing.getPaint().setColor(0xFFFF0000);
+    //body green
+    mDrawables[0] = new ShapeDrawable(new PathShape(body, 100, 130));
+    mDrawablesStrokes[0] = new ShapeDrawable(new PathShape(body, 100, 130));
     
-    mDrawableUpperLeftPattern = new ShapeDrawable(new PathShape(upperLeftPattern, 100, 130));
-    mDrawableUpperLeftPattern.getPaint().setColor(0xFFFF0000);
+    //red
+    mDrawables[1] = new ShapeDrawable(new PathShape(upperRightWing, 100, 130));    
+    mDrawablesStrokes[1] = new ShapeDrawable(new PathShape(upperRightWing, 100, 130));
+
+    mDrawables[2] = new ShapeDrawable(new PathShape(upperLeftWing, 100, 130));
+    mDrawablesStrokes[2] = new ShapeDrawable(new PathShape(upperLeftWing, 100, 130));
     
-    mDrawableUpperRightPattern = new ShapeDrawable(new PathShape(upperRightPattern, 100, 130));
-    mDrawableUpperRightPattern.getPaint().setColor(0xFFFF0000);
+    //blue
+    mDrawables[3] = new ShapeDrawable(new PathShape(lowerRightWing, 100, 130));
+    mDrawablesStrokes[3] = new ShapeDrawable(new PathShape(lowerRightWing, 100, 130));
+    
+    mDrawables[4] = new ShapeDrawable(new PathShape(lowerLeftWing, 100, 130));
+    mDrawablesStrokes[4] = new ShapeDrawable(new PathShape(lowerLeftWing, 100, 130));
+    
+    mDrawables[5] = new ShapeDrawable(new PathShape(upperLeftPattern, 100, 130));
+    mDrawablesStrokes[5] = new ShapeDrawable(new PathShape(upperLeftPattern, 100, 130));
+    
+    mDrawables[6] = new ShapeDrawable(new PathShape(upperRightPattern, 100, 130));
+    mDrawablesStrokes[6] = new ShapeDrawable(new PathShape(upperRightPattern, 100, 130));
+
+    
+
+    
+    //give all Shapes the color white
+    for (int i = 0; i<=6; i++){
+    	mDrawables[i].getPaint().setColor(0xFFFFFFFF);
     }
+    
+    //give all Shapes a black stroke
+    for (int j = 0; j<=6; j++){
+    	mDrawablesStrokes[j].getPaint().setColor(0xFF000000);
+        mDrawablesStrokes[j].getPaint().setStyle(Style.STROKE);
+    }
+}
 
     protected void onDraw(Canvas canvas) {
-
-    	mDrawableBody.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
-    	mDrawableBody.draw(canvas);
-
-    	mDrawableUpperRightWing.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
-    	mDrawableUpperRightWing.draw(canvas);
     	
-    	mDrawableLowerRightWing.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
-    	mDrawableLowerRightWing.draw(canvas);
-    	
-    	mDrawableUpperLeftWing.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
-    	mDrawableUpperLeftWing.draw(canvas);
-    	
-    	mDrawableLowerLeftWing.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
-    	mDrawableLowerLeftWing.draw(canvas);
-    	
-    	mDrawableUpperLeftPattern.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
-    	mDrawableUpperLeftPattern.draw(canvas);
-    	
-    	mDrawableUpperRightPattern.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
-    	mDrawableUpperRightPattern.draw(canvas);
-    	}
+        for (int i = 0; i<=6; i++){
+        	mDrawables[i].setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
+        	mDrawables[i].draw(canvas);
+        	
+        	mDrawablesStrokes[i].setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
+        	mDrawablesStrokes[i].draw(canvas);
+        }
+    }
 }

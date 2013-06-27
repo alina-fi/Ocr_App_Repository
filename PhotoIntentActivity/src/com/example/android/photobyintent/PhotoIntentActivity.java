@@ -69,6 +69,7 @@ public class PhotoIntentActivity extends Activity {
 		/** draw view with pathShapes */
 		shapeView = (com.example.android.photobyintent.drawableView)findViewById(R.id.shapeView);
 		shapeView.setBackgroundColor(0xffffffff);
+		
 	}
 
 	@Override
@@ -128,12 +129,12 @@ public class PhotoIntentActivity extends Activity {
 	
 	
 	//function to get average color
-	private void getAverageColor(Bitmap bitmap){
+	private void getAverageColor(Bitmap bitmap){	
 		
+		/* Toast Error Messages */
 		Context context = getApplicationContext();
 		CharSequence text = "Sorry, wrong color. Try again";
 		int duration = Toast.LENGTH_LONG;
-
 		Toast toast = Toast.makeText(context, text, duration);
 		
 		
@@ -176,24 +177,32 @@ public class PhotoIntentActivity extends Activity {
 		
 		if (requiredColor == "blue"){
 			if (averageHue > 180 && averageHue < 270){
-				cameraButton.setImageResource(R.drawable.button_yellow);
-				requiredColor = "yellow";
+				cameraButton.setImageResource(R.drawable.button_red);
+				requiredColor = "red";
+				shapeView.mDrawables[3].getPaint().setColor(0xFF0000FF);
+				shapeView.mDrawables[4].getPaint().setColor(0xFF0000FF);
+				shapeView.mDrawables[5].getPaint().setColor(0xFF0000FF);
+				shapeView.mDrawables[6].getPaint().setColor(0xFF0000FF);
 			}
 			else
 				toast.show();			
 		}
-		else if (requiredColor == "yellow"){
-			if (averageHue > 20 && averageHue < 80){
+		else if (requiredColor == "red"){
+			if (averageHue > 300 || averageHue < 50){
 				cameraButton.setImageResource(R.drawable.button_green);
 				requiredColor = "green";
+				shapeView.mDrawables[1].getPaint().setColor(0xFFFF0000);
+				shapeView.mDrawables[2].getPaint().setColor(0xFFFF0000);
+
 			}
 			else
 				toast.show();
 		}
 		else if (requiredColor == "green"){
 			if (averageHue > 70 && averageHue < 170){
-				cameraButton.setImageResource(R.drawable.button_red);
-				requiredColor = "red";
+				cameraButton.setImageResource(R.drawable.button_blue);
+				requiredColor = "blue";
+				shapeView.mDrawables[0].getPaint().setColor(0xFF00FF00);
 			}
 			else
 				toast.show();

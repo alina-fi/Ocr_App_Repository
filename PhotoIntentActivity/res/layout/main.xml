@@ -10,8 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#ffffffff"
-        android:contentDescription="@string/button"
-        android:src="@drawable/button_blue" />
+        android:contentDescription="@string/button" />
   
   <com.example.android.photobyintent.drawableView
       android:id="@+id/shapeView"

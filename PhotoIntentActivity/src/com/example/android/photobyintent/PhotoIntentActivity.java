@@ -58,10 +58,12 @@ public class PhotoIntentActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		
 
-		ImageButton picSBtn = (ImageButton) findViewById(R.id.btnIntendS);
+		cameraButton = (ImageButton) findViewById(R.id.btnIntendS);
+		cameraButton.setImageResource(R.drawable.button_blue);
 		setBtnListenerOrDisable( 
-				picSBtn, 
+				cameraButton, 
 				mTakePicSOnClickListener,
 				MediaStore.ACTION_IMAGE_CAPTURE
 		);
@@ -131,11 +133,13 @@ public class PhotoIntentActivity extends Activity {
 	//function to get average color
 	private void getAverageColor(Bitmap bitmap){	
 		
-		/* Toast Error Messages */
+		/* Toast Messages */
 		Context context = getApplicationContext();
-		CharSequence text = "Sorry, wrong color. Try again";
+		CharSequence error = "Sorry, wrong color. Try again";
+		CharSequence finish = "Well done!";
 		int duration = Toast.LENGTH_LONG;
-		Toast toast = Toast.makeText(context, text, duration);
+		Toast toastError = Toast.makeText(context, error, duration);
+		Toast toastFinish = Toast.makeText(context, finish, duration);
 		
 		
 		/* Save all pixels in an Array - ARGB values */
@@ -185,7 +189,7 @@ public class PhotoIntentActivity extends Activity {
 				shapeView.mDrawables[6].getPaint().setColor(0xFF0000FF);
 			}
 			else
-				toast.show();			
+				toastError.show();			
 		}
 		else if (requiredColor == "red"){
 			if (averageHue > 300 || averageHue < 50){
@@ -193,22 +197,21 @@ public class PhotoIntentActivity extends Activity {
 				requiredColor = "green";
 				shapeView.mDrawables[1].getPaint().setColor(0xFFFF0000);
 				shapeView.mDrawables[2].getPaint().setColor(0xFFFF0000);
-
 			}
 			else
-				toast.show();
+				toastError.show();
 		}
 		else if (requiredColor == "green"){
 			if (averageHue > 70 && averageHue < 170){
-				cameraButton.setImageResource(R.drawable.button_blue);
-				requiredColor = "blue";
+				cameraButton.setImageResource(R.drawable.button_grey);
 				shapeView.mDrawables[0].getPaint().setColor(0xFF00FF00);
+				toastFinish.show();
 			}
 			else
-				toast.show();
+				toastError.show();
 		}
 		else
-			toast.show();
+			toastError.show();
 	}	
 
 }

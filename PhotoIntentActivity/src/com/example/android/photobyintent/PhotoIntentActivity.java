@@ -30,7 +30,6 @@ public class PhotoIntentActivity extends Activity {
 	
 	ImageButton cameraButton;
 	private String requiredColor = "blue";
-	private int pixelAmount = 0;
 
 	private void dispatchTakePictureIntent(int actionCode) {
 		Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -150,7 +149,7 @@ public class PhotoIntentActivity extends Activity {
 		float[] hsv = new float[3];
 		int[] pixelsHSV = new int[pixels.length];  //Devide 100 because there are too much pixels
 		try {
-			for (int i=0; i<=pixels.length; i++){
+			for (int i=0; i<pixels.length; i++){
 				android.graphics.Color.colorToHSV(pixels[i], hsv);
 				pixelsHSV[i] = (int) hsv[0];
 				Log.v("Msg4","pixelsHSV" + pixelsHSV[i] + " " +i);
@@ -159,17 +158,19 @@ public class PhotoIntentActivity extends Activity {
 		    System.out.println("error");
 		  }
 		Log.v("Msg2","Your Color:");
+		
+		int pixelAmount = 0;
 		 
 		/* Calculate average of Hue Values (hsv[0] sind alle Hue-Farbwerte) */
 		int sumHue = 0;
 		try {
-			for (int i=0; i<=pixelsHSV.length; i++){
+			for (int i=0; i<pixelsHSV.length; i++){
 			    pixelAmount++;
 			    sumHue = sumHue + pixelsHSV[i];
 			    Log.v("Msg5", sumHue + "");
 			};
 		  } catch (Exception e) {
-		    System.out.println("error");		
+		    System.out.println(e.toString());		
 		}
 		
 		/* Save the Average Value in the global variable */
@@ -185,8 +186,8 @@ public class PhotoIntentActivity extends Activity {
 				requiredColor = "red";
 				shapeView.mDrawables[3].getPaint().setColor(0xFF0000FF);
 				shapeView.mDrawables[4].getPaint().setColor(0xFF0000FF);
-				shapeView.mDrawables[5].getPaint().setColor(0xFF0000FF);
-				shapeView.mDrawables[6].getPaint().setColor(0xFF0000FF);
+				shapeView.mDrawables[7].getPaint().setColor(0xFF0000FF);
+				shapeView.mDrawables[8].getPaint().setColor(0xFF0000FF);
 			}
 			else
 				toastError.show();			
@@ -197,6 +198,8 @@ public class PhotoIntentActivity extends Activity {
 				requiredColor = "green";
 				shapeView.mDrawables[1].getPaint().setColor(0xFFFF0000);
 				shapeView.mDrawables[2].getPaint().setColor(0xFFFF0000);
+				shapeView.mDrawables[5].getPaint().setColor(0xFFFF0000);
+				shapeView.mDrawables[6].getPaint().setColor(0xFFFF0000);
 			}
 			else
 				toastError.show();

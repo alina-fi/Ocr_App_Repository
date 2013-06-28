@@ -11,8 +11,8 @@ import android.view.View;
 
 public class drawableView extends View {
 
-    public ShapeDrawable mDrawables[] = new ShapeDrawable[7];
-    public ShapeDrawable mDrawablesStrokes[] = new ShapeDrawable[7];
+    public ShapeDrawable mDrawables[] = new ShapeDrawable[9];
+    public ShapeDrawable mDrawablesStrokes[] = new ShapeDrawable[9];
    
 
     public drawableView(Context context,AttributeSet attrs) {
@@ -22,151 +22,142 @@ public class drawableView extends View {
     /*body green */
     /*---------------------------------*/
     Path body = new Path();
-    body.moveTo(48, 40);
-    body.lineTo(44, 30);
-    body.lineTo(42, 32);
-    body.lineTo(46, 42);
+    body.moveTo(53, 38);
+    body.cubicTo(52, 36, 48, 36, 47, 38);
+    body.cubicTo(40, 23, 25, 17, 20, 15);
+    body.cubicTo(16, 10, 13, 18, 18, 17);
+    body.cubicTo(25, 18, 44, 30, 46, 42);
     body.lineTo(46, 90);
-    body.lineTo(48, 98);
-    body.lineTo(50, 102);
-    body.lineTo(52, 98);
+    body.cubicTo(48, 100, 52, 100, 54, 90);
     body.lineTo(54, 90);
     body.lineTo(54, 42);
-    body.lineTo(58, 32);
-    body.lineTo(56, 30);
-    body.lineTo(52, 40);
+    body.cubicTo(56, 30, 75, 18, 82, 17);
+    body.cubicTo(87, 18, 84, 10, 80, 15);
+    body.cubicTo(75, 17, 60, 23, 53, 38);
     body.close();
     
     /*---------------------------------*/
-    /*upperRightWing blue */
+    /*upperRightWing red */
     /*---------------------------------*/
     Path upperRightWing = new Path();
     upperRightWing.moveTo(54, 44);
-    upperRightWing.lineTo(60, 34);
-    upperRightWing.lineTo(70, 26);
-    upperRightWing.lineTo(80, 24);
-    upperRightWing.lineTo(88, 28);
-    upperRightWing.lineTo(92, 38);
-    upperRightWing.lineTo(92, 48);
-    upperRightWing.lineTo(86, 58);
-    upperRightWing.lineTo(74, 66);
-    upperRightWing.lineTo(64, 68);
+    upperRightWing.cubicTo(63, 30, 76, 21, 88, 28);
+    upperRightWing.cubicTo(98, 34, 97, 52, 86, 60);
+    upperRightWing.cubicTo(80, 65, 70, 68, 64, 68);
     upperRightWing.lineTo(54, 68);
     upperRightWing.close();
     
     /*---------------------------------*/
-    /*lowerRightWing red */
+    /*lowerRightWing blue */
     /*---------------------------------*/
     Path lowerRightWing = new Path();
     lowerRightWing.moveTo(54, 68);
     lowerRightWing.lineTo(64, 68);
-    lowerRightWing.lineTo(76, 72);
-    lowerRightWing.lineTo(85, 78);
-    lowerRightWing.lineTo(88, 84);
-    lowerRightWing.lineTo(88, 96);
-    lowerRightWing.lineTo(82, 104);
-    lowerRightWing.lineTo(74, 108);
-    lowerRightWing.lineTo(68, 108);
-    lowerRightWing.lineTo(62, 104);
-    lowerRightWing.lineTo(54, 90);
+    lowerRightWing.cubicTo(79, 72, 95, 84, 92, 103);
+    lowerRightWing.cubicTo(90, 114, 65, 118, 54, 90);
     lowerRightWing.close();
 
     /*---------------------------------*/
-    /*upperLeftWing blue */
+    /*upperLeftWing red */
     /*---------------------------------*/
     Path upperLeftWing = new Path();
     upperLeftWing.moveTo(46, 44);
-    upperLeftWing.lineTo(40, 34);
-    upperLeftWing.lineTo(30, 26);
-    upperLeftWing.lineTo(20, 24);
-    upperLeftWing.lineTo(12, 28);
-    upperLeftWing.lineTo(8, 38);
-    upperLeftWing.lineTo(8, 48);
-    upperLeftWing.lineTo(14, 58);
-    upperLeftWing.lineTo(26, 66);
-    upperLeftWing.lineTo(36, 68);
+    upperLeftWing.cubicTo(37, 30, 24, 21, 12, 28);
+    upperLeftWing.cubicTo(2, 34, 3, 52, 14, 60);
+    upperLeftWing.cubicTo(20, 65, 30, 68, 36, 68);
     upperLeftWing.lineTo(46, 68);
     upperLeftWing.close();
     
     /*---------------------------------*/
-    /*lowerLeftWing red */
+    /*lowerLeftWing blue */
     /*---------------------------------*/
     Path lowerLeftWing = new Path();
     lowerLeftWing.moveTo(46, 68);
     lowerLeftWing.lineTo(36, 68);
-    lowerLeftWing.lineTo(24, 72);
-    lowerLeftWing.lineTo(15, 78);
-    lowerLeftWing.lineTo(12, 84);
-    lowerLeftWing.lineTo(12, 96);
-    lowerLeftWing.lineTo(18, 104);
-    lowerLeftWing.lineTo(26, 108);
-    lowerLeftWing.lineTo(32, 108);
-    lowerLeftWing.lineTo(38, 104);
-    lowerLeftWing.lineTo(46, 90);
+    lowerLeftWing.cubicTo(21, 72, 5, 84, 8, 103);
+    lowerLeftWing.cubicTo(10, 114, 35, 118, 46, 90);
     lowerLeftWing.close();    
 
     /*---------------------------------*/
-    /*upperLeftPattern red */
+    /*upperLeftPattern blue */
     /*---------------------------------*/
     Path upperLeftPattern = new Path();
-    upperLeftPattern.moveTo(21, 31);
-    upperLeftPattern.lineTo(13, 39);
-    upperLeftPattern.lineTo(13, 47);
-    upperLeftPattern.lineTo(21, 55);
-    upperLeftPattern.lineTo(29, 55);
-    upperLeftPattern.lineTo(37, 47);
-    upperLeftPattern.lineTo(37, 39);
-    upperLeftPattern.lineTo(29, 31);
+    upperLeftPattern.moveTo(15, 34);
+    upperLeftPattern.cubicTo(10, 39, 10, 47, 18, 55);
+    upperLeftPattern.cubicTo(26, 55, 34, 47, 34, 39);
+    upperLeftPattern.cubicTo(29, 34, 22, 31, 15, 34);
     upperLeftPattern.close();
 
     /*---------------------------------*/
-    /*upperRightPattern red */
+    /*upperRightPattern blue */
     /*---------------------------------*/
     Path upperRightPattern = new Path();
-    upperRightPattern.moveTo(79, 31);
-    upperRightPattern.lineTo(87, 39);
-    upperRightPattern.lineTo(87, 47);
-    upperRightPattern.lineTo(79, 55);
-    upperRightPattern.lineTo(71, 55);
-    upperRightPattern.lineTo(63, 47);
-    upperRightPattern.lineTo(63, 39);
-    upperRightPattern.lineTo(71, 31);
+    upperRightPattern.moveTo(85, 34);
+    upperRightPattern.cubicTo(90, 39, 90, 47, 82, 55);
+    upperRightPattern.cubicTo(74, 55, 66, 47, 66, 39);
+    upperRightPattern.cubicTo(71, 34, 78, 31, 85, 34);
     upperRightPattern.close();
+    
+    /*---------------------------------*/
+    /*lowerLeftPattern red */
+    /*---------------------------------*/
+    Path lowerLeftPattern = new Path();
+    lowerLeftPattern.moveTo(19, 103);
+    lowerLeftPattern.cubicTo(12, 100, 14, 85, 25, 85);
+    lowerLeftPattern.cubicTo(29, 85, 37, 87, 34, 98);
+    lowerLeftPattern.cubicTo(32, 103, 25, 106, 19, 103);
+    lowerLeftPattern.close();
+
+    /*---------------------------------*/
+    /*lowerRightPattern red */
+    /*---------------------------------*/
+    Path lowerRightPattern = new Path();
+    lowerRightPattern.moveTo(81, 103);
+    lowerRightPattern.cubicTo(88, 100, 86, 85, 75, 85);
+    lowerRightPattern.cubicTo(71, 85, 63, 87, 66, 98);
+    lowerRightPattern.cubicTo(68, 103, 75, 106, 81, 103);
+    lowerRightPattern.close();
     
     //body green
     mDrawables[0] = new ShapeDrawable(new PathShape(body, 100, 130));
     mDrawablesStrokes[0] = new ShapeDrawable(new PathShape(body, 100, 130));
     
-    //red
+    //wings
     mDrawables[1] = new ShapeDrawable(new PathShape(upperRightWing, 100, 130));    
     mDrawablesStrokes[1] = new ShapeDrawable(new PathShape(upperRightWing, 100, 130));
 
     mDrawables[2] = new ShapeDrawable(new PathShape(upperLeftWing, 100, 130));
     mDrawablesStrokes[2] = new ShapeDrawable(new PathShape(upperLeftWing, 100, 130));
     
-    //blue
     mDrawables[3] = new ShapeDrawable(new PathShape(lowerRightWing, 100, 130));
     mDrawablesStrokes[3] = new ShapeDrawable(new PathShape(lowerRightWing, 100, 130));
     
     mDrawables[4] = new ShapeDrawable(new PathShape(lowerLeftWing, 100, 130));
     mDrawablesStrokes[4] = new ShapeDrawable(new PathShape(lowerLeftWing, 100, 130));
     
-    mDrawables[5] = new ShapeDrawable(new PathShape(upperLeftPattern, 100, 130));
-    mDrawablesStrokes[5] = new ShapeDrawable(new PathShape(upperLeftPattern, 100, 130));
+    //pattern
+    mDrawables[5] = new ShapeDrawable(new PathShape(lowerRightPattern, 100, 130));
+    mDrawablesStrokes[5] = new ShapeDrawable(new PathShape(lowerRightPattern, 100, 130));
+
+    mDrawables[6] = new ShapeDrawable(new PathShape(lowerLeftPattern, 100, 130));
+    mDrawablesStrokes[6] = new ShapeDrawable(new PathShape(lowerLeftPattern, 100, 130));
     
-    mDrawables[6] = new ShapeDrawable(new PathShape(upperRightPattern, 100, 130));
-    mDrawablesStrokes[6] = new ShapeDrawable(new PathShape(upperRightPattern, 100, 130));
+    mDrawables[7] = new ShapeDrawable(new PathShape(upperLeftPattern, 100, 130));
+    mDrawablesStrokes[7] = new ShapeDrawable(new PathShape(upperLeftPattern, 100, 130));
+    
+    mDrawables[8] = new ShapeDrawable(new PathShape(upperRightPattern, 100, 130));
+    mDrawablesStrokes[8] = new ShapeDrawable(new PathShape(upperRightPattern, 100, 130));
 
     
 
     
     //give all Shapes the color white
-    for (int i = 0; i<=6; i++){
+    for (int i = 0; i<=8; i++){
     	mDrawables[i].getPaint().setColor(0xFFFFFFFF);
     }
     
     //give all Shapes a black stroke
-    for (int j = 0; j<=6; j++){
+    for (int j = 0; j<=8; j++){
     	mDrawablesStrokes[j].getPaint().setColor(0xFF000000);
         mDrawablesStrokes[j].getPaint().setStyle(Style.STROKE);
     }
@@ -174,7 +165,7 @@ public class drawableView extends View {
 
     protected void onDraw(Canvas canvas) {
     	
-        for (int i = 0; i<=6; i++){
+        for (int i = 0; i<=8; i++){
         	mDrawables[i].setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
         	mDrawables[i].draw(canvas);
         	

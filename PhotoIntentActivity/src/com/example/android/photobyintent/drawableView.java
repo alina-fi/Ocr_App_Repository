@@ -118,7 +118,7 @@ public class drawableView extends View {
     lowerRightPattern.cubicTo(68, 103, 75, 106, 81, 103);
     lowerRightPattern.close();
     
-    //body green
+    //body
     mDrawables[0] = new ShapeDrawable(new PathShape(body, 100, 130));
     mDrawablesStrokes[0] = new ShapeDrawable(new PathShape(body, 100, 130));
     

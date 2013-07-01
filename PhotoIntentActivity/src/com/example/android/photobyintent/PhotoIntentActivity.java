@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.Toast;
 
 
@@ -28,7 +28,7 @@ public class PhotoIntentActivity extends Activity {
 	
 	com.example.android.photobyintent.drawableView shapeView;
 	
-	ImageButton cameraButton;
+	Button cameraButton;
 	private String requiredColor = "blue";
 
 	private void dispatchTakePictureIntent(int actionCode) {
@@ -43,8 +43,8 @@ public class PhotoIntentActivity extends Activity {
 		getAverageColor(mImageBitmap);
 	}
 
-	ImageButton.OnClickListener mTakePicSOnClickListener = 
-		new ImageButton.OnClickListener() {
+	Button.OnClickListener mTakePicSOnClickListener = 
+		new Button.OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			dispatchTakePictureIntent(ACTION_TAKE_PHOTO_S);
@@ -59,8 +59,9 @@ public class PhotoIntentActivity extends Activity {
 		setContentView(R.layout.main);
 		
 
-		cameraButton = (ImageButton) findViewById(R.id.btnIntendS);
-		cameraButton.setImageResource(R.drawable.button_blue);
+		cameraButton = (Button) findViewById(R.id.btnIntendS);
+		cameraButton.setCompoundDrawablesWithIntrinsicBounds (0, R.drawable.button_blue, 0, 0);
+		cameraButton.setText("take a blue photo");
 		setBtnListenerOrDisable( 
 				cameraButton, 
 				mTakePicSOnClickListener,
@@ -117,8 +118,8 @@ public class PhotoIntentActivity extends Activity {
 	}
 
 	private void setBtnListenerOrDisable( 
-			ImageButton btn, 
-			ImageButton.OnClickListener onClickListener,
+			Button btn, 
+			Button.OnClickListener onClickListener,
 			String intentName
 	) {
 		if (isIntentAvailable(this, intentName)) {
@@ -135,10 +136,8 @@ public class PhotoIntentActivity extends Activity {
 		/* Toast Messages */
 		Context context = getApplicationContext();
 		CharSequence error = "Sorry, wrong color. Try again";
-		CharSequence finish = "Well done!";
 		int duration = Toast.LENGTH_LONG;
 		Toast toastError = Toast.makeText(context, error, duration);
-		Toast toastFinish = Toast.makeText(context, finish, duration);
 		
 		
 		/* Save all pixels in an Array - ARGB values */
@@ -178,37 +177,58 @@ public class PhotoIntentActivity extends Activity {
 		Log.v("Msg3","Your Color: " + averageHue);
 		
 		/* Check required Color and act according the result */
-		cameraButton = (ImageButton) findViewById(R.id.btnIntendS);
+		cameraButton = (Button) findViewById(R.id.btnIntendS);
 		
 		if (requiredColor == "blue"){
 			if (averageHue > 180 && averageHue < 270){
-				cameraButton.setImageResource(R.drawable.button_red);
+				cameraButton.setCompoundDrawablesWithIntrinsicBounds (0, R.drawable.button_red, 0, 0);
+				cameraButton.setText("take a red photo");
 				requiredColor = "red";
 				shapeView.mDrawables[3].getPaint().setColor(0xFF0000FF);
 				shapeView.mDrawables[4].getPaint().setColor(0xFF0000FF);
-				shapeView.mDrawables[7].getPaint().setColor(0xFF0000FF);
-				shapeView.mDrawables[8].getPaint().setColor(0xFF0000FF);
+				
 			}
 			else
 				toastError.show();			
 		}
 		else if (requiredColor == "red"){
 			if (averageHue > 300 || averageHue < 50){
-				cameraButton.setImageResource(R.drawable.button_green);
+				cameraButton.setCompoundDrawablesWithIntrinsicBounds (0, R.drawable.button_green, 0, 0);
+				cameraButton.setText("take a green photo");
 				requiredColor = "green";
 				shapeView.mDrawables[1].getPaint().setColor(0xFFFF0000);
 				shapeView.mDrawables[2].getPaint().setColor(0xFFFF0000);
-				shapeView.mDrawables[5].getPaint().setColor(0xFFFF0000);
-				shapeView.mDrawables[6].getPaint().setColor(0xFFFF0000);
 			}
 			else
 				toastError.show();
 		}
 		else if (requiredColor == "green"){
 			if (averageHue > 70 && averageHue < 170){
-				cameraButton.setImageResource(R.drawable.button_grey);
+				cameraButton.setCompoundDrawablesWithIntrinsicBounds (0, R.drawable.button_yellow, 0, 0);
+				cameraButton.setText("take a yellow photo");
+				requiredColor = "yellow";
 				shapeView.mDrawables[0].getPaint().setColor(0xFF00FF00);
-				toastFinish.show();
+			}
+			else
+				toastError.show();
+		}
+		else if (requiredColor == "yellow"){
+			if (averageHue > 30 && averageHue < 80){
+				cameraButton.setCompoundDrawablesWithIntrinsicBounds (0, R.drawable.button_violet, 0, 0);
+				cameraButton.setText("take a violet photo");
+				requiredColor = "violet";
+				shapeView.mDrawables[7].getPaint().setColor(0xFFFFFF00);
+				shapeView.mDrawables[8].getPaint().setColor(0xFFFFFF00);
+			}
+			else
+				toastError.show();
+		}
+		else if (requiredColor == "violet"){
+			if (averageHue > 260 && averageHue < 340){
+				cameraButton.setCompoundDrawablesWithIntrinsicBounds (0, R.drawable.button_grey, 0, 0);
+				cameraButton.setText("well done!");
+				shapeView.mDrawables[5].getPaint().setColor(0xFFFF00FF);
+				shapeView.mDrawables[6].getPaint().setColor(0xFFFF00FF);
 			}
 			else
 				toastError.show();

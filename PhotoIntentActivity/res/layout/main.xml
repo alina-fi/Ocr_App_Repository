@@ -5,12 +5,12 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <ImageButton
+    <Button
         android:id="@+id/btnIntendS"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#ffffffff"
-        android:contentDescription="@string/button" />
+         />
   
   <com.example.android.photobyintent.drawableView
       android:id="@+id/shapeView"

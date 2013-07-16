@@ -1,4 +1,4 @@
-package com.example.android.photobyintent;
+package com.example.android.farbjagd;
 
 import android.content.Context;
 import android.graphics.Canvas;

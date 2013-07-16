@@ -1,6 +1,8 @@
-package com.example.android.photobyintent;
+package com.example.android.farbjagd;
 
 import java.util.List;
+
+import com.example.android.photobyintent.R;
 
 import android.app.Activity;
 import android.content.Context;
@@ -23,7 +25,7 @@ public class FarbjagdActivity extends Activity {
 	private static final String IMAGEVIEW_VISIBILITY_STORAGE_KEY = "imageviewvisibility";
 	private Bitmap mImageBitmap;
 	private float averageHue;	
-	com.example.android.photobyintent.drawableView shapeView;	
+	com.example.android.farbjagd.drawableView shapeView;	
 	Button cameraButton;
 	private String requiredColor = "blue";
 
@@ -61,7 +63,7 @@ public class FarbjagdActivity extends Activity {
 		);
 		
 		/* Draw view with path-elements */
-		shapeView = (com.example.android.photobyintent.drawableView)findViewById(R.id.shapeView);
+		shapeView = (com.example.android.farbjagd.drawableView)findViewById(R.id.shapeView);
 		shapeView.setBackgroundColor(0xffffffff);
 		
 	}

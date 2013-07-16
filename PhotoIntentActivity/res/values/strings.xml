@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Hello World, PhotoIntentActivity!</string>
-    <string name="app_name">PhotoByIntent</string>
+    <string name="app_name">Farbjagd</string>
     <string name="btnIntendS">Take (small) Picture</string>
     <string name="album_name">CameraSample</string>
     <string name="view">Drawable</string>

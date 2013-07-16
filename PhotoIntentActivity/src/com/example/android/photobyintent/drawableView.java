@@ -118,11 +118,11 @@ public class drawableView extends View {
     lowerRightPattern.cubicTo(68, 103, 75, 106, 81, 103);
     lowerRightPattern.close();
     
-    //body
+    /* body */
     mDrawables[0] = new ShapeDrawable(new PathShape(body, 100, 130));
     mDrawablesStrokes[0] = new ShapeDrawable(new PathShape(body, 100, 130));
     
-    //wings
+    /* wings */
     mDrawables[1] = new ShapeDrawable(new PathShape(upperRightWing, 100, 130));    
     mDrawablesStrokes[1] = new ShapeDrawable(new PathShape(upperRightWing, 100, 130));
 
@@ -135,7 +135,7 @@ public class drawableView extends View {
     mDrawables[4] = new ShapeDrawable(new PathShape(lowerLeftWing, 100, 130));
     mDrawablesStrokes[4] = new ShapeDrawable(new PathShape(lowerLeftWing, 100, 130));
     
-    //pattern
+    /* pattern */
     mDrawables[5] = new ShapeDrawable(new PathShape(lowerRightPattern, 100, 130));
     mDrawablesStrokes[5] = new ShapeDrawable(new PathShape(lowerRightPattern, 100, 130));
 
@@ -151,12 +151,12 @@ public class drawableView extends View {
     
 
     
-    //give all Shapes the color white
+    /* give all shapes the color white */
     for (int i = 0; i<=8; i++){
     	mDrawables[i].getPaint().setColor(0xFFFFFFFF);
     }
     
-    //give all Shapes a black stroke
+    /* give all shapes a black stroke */
     for (int j = 0; j<=8; j++){
     	mDrawablesStrokes[j].getPaint().setColor(0xFF000000);
         mDrawablesStrokes[j].getPaint().setStyle(Style.STROKE);
